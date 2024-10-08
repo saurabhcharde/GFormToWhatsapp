@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 public class EventFormTemplateMessage {
 
+    private final static String TEMPLATE_NAME = "event_registration_template";
+
     public String create(String imageUrl, FormResponseDto responseDto){
 
         // Create the image object
@@ -68,7 +70,7 @@ public class EventFormTemplateMessage {
 
         // Create the template object
         JSONObject templateObject = new JSONObject();
-        templateObject.put("name", "event_registration_template");
+        templateObject.put("name", TEMPLATE_NAME);
         templateObject.put("language", languageObject);
         templateObject.put("components", componentsArray);
 
@@ -76,7 +78,7 @@ public class EventFormTemplateMessage {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messaging_product", "whatsapp");
         jsonObject.put("recipient_type", "individual");
-        jsonObject.put("to", "917058072526");
+        jsonObject.put("to", "91" + responseDto.getPhone());
         jsonObject.put("type", "template");
         jsonObject.put("template", templateObject);
 
